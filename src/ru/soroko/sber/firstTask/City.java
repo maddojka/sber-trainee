@@ -1,3 +1,5 @@
+package ru.soroko.sber.firstTask;
+
 public class City {
     private String name;
     private String region;
@@ -62,7 +64,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
+        return "ru.soroko.sber.firstTask.City{" +
                 "name='" + name + '\'' +
                 ", region='" + region + '\'' +
                 ", district='" + district + '\'' +
