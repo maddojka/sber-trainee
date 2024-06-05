@@ -64,7 +64,7 @@ public class City {
 
     @Override
     public String toString() {
-        return "ru.soroko.sber.firstTask.City{" +
+        return "City{" +
                 "name='" + name + '\'' +
                 ", region='" + region + '\'' +
                 ", district='" + district + '\'' +
