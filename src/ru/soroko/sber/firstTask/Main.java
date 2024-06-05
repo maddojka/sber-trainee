@@ -21,7 +21,9 @@ public class Main {
         sortByName(cities);
         System.out.println();
         sortByNameAnd(cities);
-
+        System.out.println();
+        System.out.println("Задание 3:");
+        System.out.println(findMaxPopulation(cities));
     }
 
     public static List<City> parseFile(File file) {
@@ -37,9 +39,9 @@ public class Main {
                     cities.add(new City(data[1], data[2], data[3],
                             Long.parseLong(data[4]), "неизвестно"));
                 }
-               /* for (City city : cities) {
+                for (City city : cities) {
                     System.out.println(city);
-                }*/
+                }
             }
         } catch (IOException e) {
             System.out.println("При чтении файла возникла ошибка");
@@ -63,5 +65,21 @@ public class Main {
         for (City city : sortedByNameCities) {
             System.out.println(city);
         }
+    }
+
+    public static String findMaxPopulation(List<City> cities) {
+        long[] populationArray = new long[cities.size()];
+        long max = Long.MIN_VALUE;
+        int index = 0;
+        for (int i = 0; i < cities.size(); i++) {
+            populationArray[i] = cities.get(i).getPopulation();
+        }
+        for (int i = 0; i < populationArray.length; i++) {
+            if (populationArray[i] > max) {
+                max = populationArray[i];
+                index = i;
+            }
+        }
+        return "[" + index + "] " + "= " + max;
     }
 }
