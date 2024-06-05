@@ -2,10 +2,8 @@ package ru.soroko.sber.firstTask;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static final String FILE_PATH =
@@ -23,7 +21,15 @@ public class Main {
         sortByNameAnd(cities);
         System.out.println();
         System.out.println("Задание 3:");
+        System.out.println();
         System.out.println(findMaxPopulation(cities));
+        System.out.println();
+        System.out.println("Задание 4:");
+        System.out.println();
+        Map<String, Long> mapOfCities = countCitiesInEachRegion(cities);
+        for (Map.Entry<String, Long> stringLongEntry : mapOfCities.entrySet()) {
+            System.out.println(stringLongEntry.getKey() + " - " + stringLongEntry.getValue());
+        }
     }
 
     public static List<City> parseFile(File file) {
@@ -81,5 +87,10 @@ public class Main {
             }
         }
         return "[" + index + "] " + "= " + max;
+    }
+
+    public static Map<String,Long> countCitiesInEachRegion(List<City> cities) {
+        return cities.stream().
+                collect(Collectors.groupingBy(City::getRegion, Collectors.counting()));
     }
 }
